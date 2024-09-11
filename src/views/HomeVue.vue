@@ -1,13 +1,5 @@
 <template>
     <div>
-        <!-- <div class="bg-white d-flex justify-center">
-            <div class="cover d-flex justify-end align-end position-relative">
-                <v-img height="200" width="200" 
-                    src="https://media.istockphoto.com/id/1190330112/photo/fried-pork-and-vegetables-on-white-background.jpg?s=612x612&w=0&k=20&c=TzvLLGGvPAmxhKJ6fz91UGek-zLNNCh4iq7MVWLnFwo=" />
-                    <h3 class="position-absolute">חדר אוכל</h3>
-                </div>
-        </div> -->
-        <div v-if="store.isAdmin" class="d-flex justify-center">שלום אדמין</div>
         <div class="cards_container">
             <v-card class="d-flex flex-wrap flex-col mx-auto" max-width="1000">
                 <v-container fluid>
@@ -30,6 +22,7 @@
 <script setup>
 import { useStore } from '@/store/index'
 
+
 const store = useStore();
 console.log(store.isAdmin)
 
@@ -39,7 +32,3 @@ const cards = [
 
 ]
 </script>
-
-<style>
-.title_container {}
-</style>

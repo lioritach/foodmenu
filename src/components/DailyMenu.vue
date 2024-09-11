@@ -1,7 +1,12 @@
 <template>
     <div>
         <v-container>
-            <Table :backToDailyMenu="$t('backToDailyMenu')" :title="$t('title')" :cards="store.cards" :days="days" :isAdmin="store.isAdmin" />
+            <div v-if="isAdmin">
+                <Table :backToDailyMenu="$t('backToDailyMenu')" :title="$t('title')" :cards="store.cards" :days="days" :isAdmin="false" />
+            </div>
+            <div v-else>
+                <Table :backToDailyMenu="$t('backToDailyMenu')" :addRow="$t('addRow')" :save="$t('save')" :copyMenuForNextWeek="$t('copyMenuForNextWeek')" :copyMenuForCurrWeek="$t('copyMenuForCurrWeek')" :health="$t('health')" :regular="$t('regular')" :dairy="$t('dairy')" :cards="store.cards" :days="days" :isAdmin="true" />
+            </div>
         </v-container>
     </div>
 
@@ -13,23 +18,9 @@ import Table from '@/components/Table.vue'
 import { useStore } from '@/store/index'
 
 const store = useStore();
-// const cards = [
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcumrkfqHUn4SPlaGwnNepboVlJxBU82CROA&s', text: 'מרק' },
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3qAz1TZ0hw54IFS_Jz61HRvfm7UkMOyxT_w&s', text: 'בשר' },
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh5z-9F51ODwmVpE0Xxu2bA_o1DTHUfR897A&s', text: 'בשר' },
-//     { src: 'https://veg.co.il/wp-content/uploads/vegan-burger-for-bbq.jpg.850x810@2x.webp?v=3', text: 'המבורגר' },
-//     { src: 'https://eliaabayof.com/wp-content/uploads/2023/07/%D7%A9%D7%A0%D7%99%D7%A6%D7%9C-1.jpg', text: 'שניצל' },
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnhqidV9MlKgebdZ7cY9jox066q3b_0TLeQ&s', text: 'פחממה' },
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnhqidV9MlKgebdZ7cY9jox066q3b_0TLeQ&s', text: 'פחממה' },
-//     { src: 'https://chef-lavan.co.il/wp-content/uploads/old-storage/uploads/f_5851a79b1e0f4_1481746331.jpg', text: 'דג' },
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnhqidV9MlKgebdZ7cY9jox066q3b_0TLeQ&s', text: 'Text for card 9' },
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnhqidV9MlKgebdZ7cY9jox066q3b_0TLeQ&s', text: 'Text for card 10' },
-//     { src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStnhqidV9MlKgebdZ7cY9jox066q3b_0TLeQ&s', text: 'Text for card 11' }
-//     // Repeat or dynamically generate more card data as needed
-// ]
 
 const days = [
-    { name: 'חמישי - 05/07/2024' },
+    { name: 'חמישי - 05/07/2024',},
     { name: 'רביעי - 04/07/2024' },
     { name: 'שלישי - 03/07/2024' },
     { name: 'שני - 02/07/2024' },
@@ -89,7 +80,7 @@ th {
 }
 
 .custom {
-    justify-content: space-between;
+    justify-content: end;
 
 }
 
@@ -98,9 +89,7 @@ th {
     background-color: #f5f5f5;
     position: sticky;
     top: 0;
-    /* Make the header sticky */
     z-index: 1;
-    /* Ensure the header is above the content */
 }
 
 .text {

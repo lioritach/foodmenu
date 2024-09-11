@@ -7,7 +7,14 @@ export const i18n = createI18n({
         heb: {      
             backToDailyMenu: "חזרה לתפריט היומי",
             title: 'חדר אוכל',
-            typeOfFood: 'סוג מנה'    
+            typeOfFood: 'סוג מנה',
+            addRow: 'הוספת שורה',
+            save: 'שמירה',
+            copyMenuForNextWeek: 'העתקת תפריט לשבוע הבא',
+            copyMenuForCurrWeek: 'העתקת תפריט לשבוע נוכחי',
+            regular: 'תפריט רגיל',
+            health: 'תפריט בריאות',
+            dairy: 'תפריט חלבי'
         }
     }
 })
